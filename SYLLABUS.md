@@ -6,8 +6,6 @@
 
 Your teachers are Vicky McDermott, Nathan Yee, Prava Dhulipalla, and Nick Steelman.
 
-Your NINJAs are TBD
-
 ### Course Learning Goals
 
 **Students will improve their abilities to …**
@@ -18,15 +16,15 @@ Your NINJAs are TBD
 - Effectively and efficiently solve problems by using data structures and algorithms
 - Assess and communicate the efficiency and complexity of algorithms
 
-### Self Study
+### Credits
 
-This is class is a **4 credit Independent Study** (IS) in engineering.
+This is class is we go down on your transcript as **ENGR3599A: Special Topics in Computing** for 4 ENGR credits.
 
 ### Office Hours
 
-Office hours are located in the first floor lounge of East Hall during the following times.
+Office hours are located in the first floor lounge of East Hall.
 
-TBD
+The official NINJAs and office hours times will be decided when schedules become more concrete (at least by the 2nd day of instruction). 
 
 <!-- #### Monday <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Willem & Kevin <br/>
