@@ -24,7 +24,7 @@ This is class is we go down on your transcript as **ENGR3599A: Special Topics in
 
 Office hours are located in the first floor lounge of East Hall.
 
-The official NINJAs and office hours times will be decided when schedules become more concrete (at least by the 2nd day of instruction). 
+The official NINJAs and office hours times will be decided when schedules become more concrete (at least by the 2nd day of instruction).
 
 <!-- #### Monday <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Willem & Kevin <br/>
@@ -43,7 +43,7 @@ The official NINJAs and office hours times will be decided when schedules become
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-10PM** Ben, Serena -->
 
 
-If you need help and it's not during office hours, check out our Slack channel, [#dsa-18](https://olin.slack.com/messages/dsa-19). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
+If you need help and it's not during office hours, check out our Slack channel, [#dsa-19](https://olin.slack.com/messages/dsa-19). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
 
 ## Course Expectations
 
