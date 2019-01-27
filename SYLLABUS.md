@@ -38,20 +38,20 @@ If an instructor is listed on the hours, they are holding on call hours. So, mes
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Sid, Vicky <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Sid, Vicky <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Jonah, Vicky <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Sherman
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Nick Sherman
 
 #### Thursday <br/>		
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Kevin, Duncan, Prava <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Nathan, Kevin, Duncan, Prava <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Anusha, Nathan, Sherman, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Anusha, Nathan, Nick Sherman, Prava <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **11-12PM** Anusha, Prava
 
 #### Sunday <br/>
 			
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Kevin <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Athmika, Emily, kevin, Prava <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Athmika, Emily, Prava <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Athmika, Prava
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Athmika, Emily, kevin, Nick Steelman <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Athmika, Emily, Nick Steelman <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Athmika, Nick Steelman
 
 
 If you need help and it's not during office hours, check out our Slack channel, [#dsa-19](https://olin.slack.com/messages/dsa-19). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
