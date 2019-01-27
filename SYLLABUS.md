@@ -24,23 +24,34 @@ This is class is we go down on your transcript as **ENGR3599A: Special Topics in
 
 Office hours are located in the first floor lounge of East Hall.
 
-The official NINJAs and office hours times will be decided when schedules become more concrete (at least by the 2nd day of instruction).
+If an instructor is listed on the hours, they are holding on call hours. So, message them if everyone is busy or the NINJAs can't help.
 
-<!-- #### Monday <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Willem & Kevin <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Willem, Kevin, David & Serena <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** David & Serena
+#### Monday <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **6-7PM** Jonah <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Jonah <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM**  Serena, Nathan Yee <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Nathan Shuster, Serena, Nathan Yee <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Nathan Shuster, Anusha, Serena, Nathan Yee<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **11-12PM** Anusha, Serena
 
 #### Wednesday <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-10PM** Jingyi & Jason
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Sid, Vicky <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Sid, Vicky <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Jonah, Vicky <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Sherman
 
-#### Thursday <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Willem, Kevin & Erica <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Nick, Willem, Kevin & Erica <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Nick
+#### Thursday <br/>		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Kevin, Duncan, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Nathan, Kevin, Duncan, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Anusha, Nathan, Sherman, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **11-12PM** Anusha, Prava
 
 #### Sunday <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-10PM** Ben, Serena -->
+			
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Kevin <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Athmika, Emily, kevin, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Athmika, Emily, Prava <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Athmika, Prava
 
 
 If you need help and it's not during office hours, check out our Slack channel, [#dsa-19](https://olin.slack.com/messages/dsa-19). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
