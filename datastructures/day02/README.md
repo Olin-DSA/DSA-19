@@ -43,7 +43,7 @@ public class Chicken {
     String color;
 }
 ```
-The tests you will be running on your `MyLinkedList` class will be using this `Chicken` class.
+The tests you will be running on your `MyLinkedList` class will be using this `Chicken` class. Remember to update the **attribute** called size (which is the current amount of chickens) as you add and remove chickens.
 
 1. Implement an empty constructor. Initialize `head`, `tail`, and `size`.
 
