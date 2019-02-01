@@ -27,8 +27,6 @@ Office hours are located in the first floor lounge of East Hall.
 If an instructor is listed on the hours, they are holding on call hours. So, message them if everyone is busy or the NINJAs can't help.
 
 #### Monday <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **6-7PM** Jonah <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Jonah <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM**  Serena, Nathan Yee <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Nathan Shuster, Serena, Nathan Yee <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Nathan Shuster, Anusha, Serena, Nathan Yee<br/>
@@ -38,7 +36,7 @@ If an instructor is listed on the hours, they are holding on call hours. So, mes
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **7-8PM** Sid, Vicky <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Sid, Vicky <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **9-10PM** Jonah, Vicky <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Nick Sherman
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **10-11PM** Jonah, Nick Sherman
 
 #### Thursday <br/>		
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **8-9PM** Kevin, Duncan, Prava <br/>

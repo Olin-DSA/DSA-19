@@ -14,7 +14,7 @@ This homework is due Thursday, January 31st (see below for submission details).
 - If you're having trouble understanding the implementations or runtimes of your `MyArrayList` methods, read **3.1, 3.2, 3.3**. (Think Data Structures' `ArrayList` stores data of type `E`. In our implementation, our `ArrayList` stores data of type `Cow`. For the most part, in the functions you can simply replace `E` with `Cow`).
 - [This](https://www.unf.edu/~wkloster/3540/wiki_book2.pdf#page=20) PDF has a great 2-page explanation of amortized analysis.
 - Our slides on arraylists are [here](https://docs.google.com/presentation/d/1GpCpt52tKbWvFCEuA0-7JGRquXoiqopMhWY68WLiRHE/edit?usp=sharing)
-- There is a `hints.md` document with more information on some of the problems if you are stuck.
+- There is a [`hints.md`](https://github.com/Olin-DSA/DSA-19/blob/master/datastructures/day01/hints.md) document with more information on some of the problems if you are stuck.
 
 
 ## `MyArrayList`
@@ -62,7 +62,7 @@ For each of the following methods, leave a comment above your function detailing
 
     `public void add(Cow c)`
 
-3. How many cows does Vicky have? Implement a method called `size` that returns the number of cows currently in your farm. (Has a hint.)
+3. How many cows does Vicky have? Implement a method called `size` that returns the number of cows currently in your farm. (Has a [hint](https://github.com/Olin-DSA/DSA-19/blob/master/datastructures/day01/hints.md).)
 
     `public int size()`
 
@@ -70,15 +70,15 @@ For each of the following methods, leave a comment above your function detailing
 
     `public Cow get(int index)`
 
-5. Some cows might leave the farm for various reasons, and they might leave in any order. If a cow in the middle leaves, we want sure to account for th empty space it leaves. Implement a method called `remove` that will remove a cow. Return the removed `Cow` so we can "deal" with it. If the `index` is outside the array's bounds perform error handling here using `IndexOutOfBoundsException`. (Has a hint.)
+5. Some cows might leave the farm for various reasons, and they might leave in any order. If a cow in the middle leaves, we want sure to account for th empty space it leaves. Implement a method called `remove` that will remove a cow. Return the removed `Cow` so we can "deal" with it. If the `index` is outside the array's bounds perform error handling here using `IndexOutOfBoundsException`. (Has a [hint](https://github.com/Olin-DSA/DSA-19/blob/master/datastructures/day01/hints.md).)
 
     `public Cow remove(int index)`
 
-6. How can we add a `Cow` in the middle of our `MyArrayList`? Overload the `add` function to take in an index as a first argument, and inserts a cow at that index. Note that we are not replacing any cows, just inserting one in between two other cows. If the `index` is not in the array, or on the very end, perform error handling here using `IndexOutOfBoundsException`. (Has a hint.)
+6. How can we add a `Cow` in the middle of our `MyArrayList`? Overload the `add` function to take in an index as a first argument, and inserts a cow at that index. Note that we are not replacing any cows, just inserting one in between two other cows. If the `index` is not in the array, or on the very end, perform error handling here using `IndexOutOfBoundsException`. (Has a [hint](https://github.com/Olin-DSA/DSA-19/blob/master/datastructures/day01/hints.md).)
 
     `public void add(int index, Cow c)`
 
-7. Thanks to your help, Vicky's milk business has really gotten off the ground. He is able to expand his farm and is able to accept lots of cows. Modify your code so that we can **optimally** perform resizes. We never want to allocate more space than we need to, but we should also have an *average* insertion time complexity of `O(1)`. Make sure that your `MyArrayList` stays above 25% full. You may find the function [`System.arraycopy`](https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy(java.lang.Object,%20int,%20java.lang.Object,%20int,%20int)) helpful. (Has a hint.)
+7. Thanks to your help, Vicky's milk business has really gotten off the ground. He is able to expand his farm and is able to accept lots of cows. Modify your code so that we can **optimally** perform resizes. We never want to allocate more space than we need to, but we should also have an *average* insertion time complexity of `O(1)`. Make sure that your `MyArrayList` stays above 25% full. You may find the function [`System.arraycopy`](https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy(java.lang.Object,%20int,%20java.lang.Object,%20int,%20int)) helpful. (Has a [hint](https://github.com/Olin-DSA/DSA-19/blob/master/datastructures/day01/hints.md).)
 
 ## Additional Practice (Optional)
 
