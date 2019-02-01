@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 1: Arrays}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+    \item Assume array of integers.
+    
+    \item Substring is continuous, subsequence is not. For example, \texttt{[2,5]} is a subsequence but not a substring of \texttt{[2,3,5]}.
+    
+    \item The \textbf{in place} requirement means O(1) space.
+\end{itemize}
+
+\subsection*{}
+
+For each of the following problems, write a function. Start with the CORE problems, but if you finish before the end of the class period you can attempt the CHALLENGE problems.
+
+\subsection*{}
+
+CORE:
+
+\begin{enumerate}
+
+    \item Find the minimum of an array
+    
+    \item Reverse an array in place (do not create a new array).
+    
+    \item Remove all duplicate elements from a dynamic array (an ArrayList) without copying elements over to a new array. You can modify the order of the elements in the array.
+
+    \item Given an array with an odd number of elements, find the median without sorting.
+    
+    \item We call an array circularly sorted if there exists some starting index after which the entire list is sorted (allows wrapping back around to the beginning). For instance, \texttt{[8,9,10,6,7]} is circularly sorted with starting index 3. \texttt{[3, 5, 6, 4, 5]} is not circularly sorted. Write a function that will return the starting index of the sorted (in ascending order) array, or -1 if there is none.
+\end{enumerate}
+    
+\subsection*{}
+
+CHALLENGE:
+
+\begin{enumerate}\setcounter{enumi}{5}
+    
+    \item Given an array of unique integers and an integer \texttt{n}, return the number of pairs of integers in that array who sum to the input \texttt{n}. Do not reuse elements. For example, \texttt{numPairs([1,7,3,4,5,2],8)} returns \texttt{2} (\texttt{[1,7]} and \texttt{[3,5]}). Note that it does not return \texttt{3}, because \texttt{[4, 4]} does not count.
+
+    \item Find the longest sorted substring of an input array. Return an array of size 2: the starting and ending indices of said substring.
+    
+    % \item Find the length of the largest sorted substring of an array.
+    % This problem seems the same as #6 - David
+    
+    \item Given an NxN matrix (2D array: \texttt{int[N][N]}), rotate the matrix 90 degrees clockwise in place.
+    
+    
+\end{enumerate}
+
+\clearpage
+
+\begin{lstlisting}[language=Python]
+
+def find_min(arr):
+    if len(arr) == 0:
+        throw Exception()
+    m = Infinity
+    for i in arr:
+        if i < m:
+            m = i
+    return m
+
+def swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+
+def reverse(arr):
+    i = 0
+    j = arr.length - 1
+    while i < j:
+        swap(arr, i, j)
+        j--
+        i++
+
+def remove_duplicates(arrList):
+    i = 0
+    while i < arrList.size:
+        j = i + 1
+        while j < arrList.size:
+            if arrList[i] == arrList[j]:
+                swap(arrList, j, arrList.size - 1)
+                arrList.pop()
+            else:
+                j+=1
+        i+=1
+
+def find_median(arr):
+    for i in arr:
+        lower = 0
+        higher = 0
+        equal = 0
+        for j in arr:
+            if i < j:
+                lower+=1
+            if i > j:
+                higher+=1
+            if i == j:
+                equal+=1
+        if abs(higher-lower) < equal:
+            return i
+
+def circularly_sorted(arr):
+    if len(arr) == 0:
+        return -1
+    descends = 0
+    index = 0
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i-1]:
+            descends+=1
+            index=i
+        if (descends > 1) or (descends > 0 and arr[i] > arr[0]):
+            return -1
+    return index
+
+def circularly_sorted_better(arr):
+    if len(arr) == 0:
+        return -1
+    descends = 0
+    index = 0
+    for i in range(0, len(arr)):
+        if arr[i] < arr[(i-1) % len(arr)]:
+            descends+=1
+            index=i
+    if descends > 1:
+        return -1
+    return index
+
+def numPairs(arr, n):
+    s = 0
+    for i from 0, len(arr):
+        for j from i+1, len(arr):
+            if arr[i] + arr[j] == n:
+                s += 1
+    return s
+
+def longest_sorted_substring(arr):
+
+    start = 0
+    end = 0
+
+    curr_start = 0
+
+    for i in range(1, len(arr)):
+        if arr[i] >= arr[i-1]:
+            if i - curr_start > end - start:
+                start = curr_start
+                end = i
+        else:
+            curr_start = i
+            
+    return start, end
+
+# THIS IS UNTESTED
+def rotate_matrix(matrix):
+    for i in range(matrix.n / 2):
+        toprow = matrix[i, :] # the top row
+        matrix[i, :] = matrix[:, i] # top row = left column
+        matrix[:, i] = matrix[matrix.n - i - 1, :] # left column = bottom row
+        matrix[matrix.n - i - 1, :] = matrix[:, matrix.n - i - 1] # bottom row = right column
+        matrix[:, matrix.n - i - 1] = toprow # right column = top row
+
+\end{lstlisting}
+
+\end{document}
