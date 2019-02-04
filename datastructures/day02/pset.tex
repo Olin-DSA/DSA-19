@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 2: Linked Lists, Stacks and Queues}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Linked List Core Problems}
+
+\begin{lstlisting}[language=Java]
+Node {
+    int data;
+    Node next;
+}
+
+\end{lstlisting}
+
+\noindent For each of the following problems, assume you are only given a \texttt{Node head} (or two), which is the head of a linked list. Focus on first getting a working solution, and then optimizing to a O(N) time O(1) space.
+
+\begin{enumerate}
+
+\setcounter{enumi}{0}
+
+\item Given two linked lists, check if they are equal.
+
+\item Reverse a linked list. Return the new head node.
+
+\end{enumerate}
+
+\section*{Linked List Extension Problems}
+
+\begin{enumerate}
+
+\setcounter{enumi}{0}
+
+\item Check if a linked list is cyclic (that is, there is no node who's \texttt{next} pointer is \texttt{null}, because a node points to a previous node).
+
+\item Check if a singly linked list is a palindrome. You can modify the linked list.
+
+\end{enumerate}
+
+\subsection*{}
+
+\section*{Stacks and Queues Core Problems}
+
+Assumptions:
+
+\begin{itemize}
+  \item All stacks are listed from top to bottom.
+  \item All problems can be solved using O(N) time and O(N) space unless noted otherwise.
+  \item Stacks support: \texttt{push}, \texttt{pop}, \texttt{peek}, and \texttt{isEmpty}. They have no other methods.
+\end{itemize}
+
+
+\begin{enumerate}
+
+\setcounter{enumi}{4}
+
+\item Given an integer n, determine if it is palindromic (12,321 is palindromic, 23 is not) (Hint: Think about how you get the last digit of a number. i.e. 435 $\rightarrow$ 5).
+
+\item How would you implement a queue using two stacks? You don’t have to actually implement it, but either draw it or write an explanation on the board. Explain its operations’ runtimes (enqueue and dequeue). Use amortized analysis to discuss your runtimes. Find an instructor and discuss your solution.
+\end{enumerate}
+
+\section*{Stacks and Queues Extension Problems}
+\begin{enumerate}
+
+\setcounter{enumi}{4}
+
+\item Given a string of opening and closing parentheses, determine if it is a valid expression. That is, every opening paren has a closing partner eg \texttt{"()(())"} is valid, but \texttt{"()())(()"} is not.
+
+\end{enumerate}
+
+
+\clearpage
+
+\begin{lstlisting}[language=Python]
+
+def equal(head1, head2):
+
+    while (head1 is not None) and (head2 is not None):
+        if head1.data != head2.data:
+            return False
+        head1 = head1.next
+        head2 = head2.next
+
+    return (head1 is None and head2 is None)
+
+def reverseList(head):
+    prev = None
+    while head:
+        curr = head
+        head = head.next
+        curr.next = prev
+        prev = curr
+    return prev
+
+def hasCycle(head):
+    slow = head
+    fast = head
+    while fast!=None and fast.next!=None:
+        slow = slow.next
+        fast = fast.next.next
+        if slow is fast:
+            return True
+    return False
+
+def find_nth(head, n):
+    while n > 0 and head is not None:
+        head = head.next
+        n -= 1
+    return head
+
+def palindrome(head):
+
+    l = length(head)
+
+    if l <= 1:
+        return True
+
+    left_of_middle = find_nth(head, l/2 - 1)
+    # if linked list has odd number of elements, drop the middle element
+    if (l % 2) == 1:
+        left_of_middle.next = left_of_middle.next.next
+
+    # reverse the back half of the linked list
+    left_of_middle.next = reverseList(left_of_middle.next)
+
+    # seperate the front and back half of the LL into seperate Lists
+    middle = left_of_middle.next
+    left_of_middle.next = None
+
+    # check equality
+    return equal(head, middle)
+
+def num_palindrome(i):
+    j = i
+    stack = Stack()
+    while j != 0:
+        stack.push(j%10)
+        j/=10
+    while not stack.isEmpty():
+        if stack.pop() != i%10:
+            return False
+        i/=10
+    return True
+
+def valid_expr(s):
+    stack = Stack()
+    for c in s:
+        if not stack.isEmpty() and c == ')' and stack.peek() == '(':
+            stack.pop()
+        else:
+            stack.push(c)
+    return stack.isEmpty()
+
+\end{lstlisting}
+
+\end{document}

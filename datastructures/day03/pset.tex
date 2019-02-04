@@ -1,0 +1,272 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 3: Linear Data Structures Review}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+        
+\subsection*{}
+
+Notes:
+
+\begin{itemize}
+  \item Focus on getting a working solution first before trying to reach the optimal complexities.
+  \item If you want to know if you have the optimal solution, ask an instructor
+  \item The first two problems are from last class. Skip them if you already did them.
+\end{itemize}
+    
+\subsection*{Core (do these first)}
+
+\begin{enumerate}
+
+
+\item Given a string of opening and closing parentheses, determine if it is a valid expression. That is, every opening paren has a closing partner eg \texttt{"()(())"} is valid, but \texttt{"()())(()"} is not.
+
+\item How would you implement a queue using two stacks? You don’t have to actually implement it, but either draw it or write an explanation on the board. Explain its operations’ runtimes (enqueue and dequeue). Use amortized analysis to discuss your runtimes. Find an instructor and discuss your solution.
+
+\item Given an array \texttt{A}, call the $0^{th}$ element \texttt{t}. Modify \texttt{A} such that all elements less than \texttt{t} come before \texttt{t}, and all other elements (naturally larger than \texttt{t}) after \texttt{t}. The elements before and after this element do not have to be sorted. Return the index \texttt{t} ends up at.% We have java solution written already in quicksort HW
+
+\begin{itemize}
+  \item pivot([\textbf{7}, 2, 4, 9, 1, 2]) pivots to [2, 4, 1, 2, \textbf{7}, 9] and returns 4.
+  \item pivot([\textbf{9}, 8, 7, 6, 5, 4]) pivots to [8, 7, 6, 5, 4, \textbf{9}] and returns 5.
+  \item pivot([\textbf{1}, 2, 3, 4, 5, 6]) leaves the array unchanged and returns 0.
+\end{itemize}
+
+\item You are given an array of $k$ stacks of cylinders with varying heights, represented as \texttt{Stack}s of integers. Assume you have a helper function \texttt{stack\_sum(Stack s)} that takes a Stack and returns the integer sum of all the elements in the Stack in O(N).  For example, the stack \texttt{[3, 5, 1]} is a stack with a cylinder of height 3 on top, and height 1 on bottom. Find the maximum possible height of the stacks such that all of the stacks are exactly the same height. You can pop zero or more cylinders from the top of zero or more of $k$ stacks until they're all the same height, then return the height. The removals must be performed in such a way as to maximize the height. E.g., given:
+
+\begin{itemize}
+  \item \texttt{[3, 2, 1, 1, 1]}
+  \item \texttt{[4, 3, 2]}
+  \item \texttt{[1, 1, 4, 1]}
+\end{itemize}
+
+Your function should return 5, because you would pop off the stacks to get to:
+
+\begin{itemize}
+  \item \texttt{[2, 1, 1, 1]}
+  \item \texttt{[3, 2]}
+  \item \texttt{[4, 1]}
+\end{itemize}
+
+\item Find the length of the longest palindromic substring from the given string. E.g. \texttt{"abcbaracecar"} $\rightarrow$ \texttt{7}, which is the length of "racecar". \texttt{"ahotpottop"} $\rightarrow$ \texttt{6}, the length of "pottop". The returned string does not have to be a word.
+
+\subsection*{Extension (do these after)}
+
+\item Given an array of ints, return the sum of the largest subarray. E.g., \texttt{[7, 6, -3, 5, -2, -8, 4, 3]} would return 15. (7 + 6 - 3 + 5).
+
+\item Assume you have a function \texttt{applyOp(num1, num2, op)}. For example: % need solution
+
+\begin{itemize}
+
+    \item \texttt{applyOp(5, 3, '+')} $\rightarrow$ 8
+    \item \texttt{applyOp(5, 3, '*')} $\rightarrow$ 15
+    \item \texttt{applyOp(6, 3, '/')} $\rightarrow$ 2
+    \item \texttt{applyOp(2, 1, '-')} $\rightarrow$ 1
+
+
+\end{itemize}
+
+Your job is to write a function that evaluates the value of an arithmetic expression (given to you as an array) in Reverse Polish Notation: "a mathematical notation in which every operator follows all of its operands". E.g.,
+
+\begin{itemize}
+
+    \item \texttt{ [2, 1, '+', 3, '*']} $\rightarrow$ ((2 + 1) * 3) $\rightarrow$ 9
+    \item \texttt{ [4, 13, 5, '/', '+'} $\rightarrow$ (4 + (13 / 5)) $\rightarrow$ 6
+    \item \texttt{ [5, 2, 8, '+', '-', 2, '*'} $\rightarrow$ ((5 - (2 + 8)) * 2) $\rightarrow$ -10
+
+\end{itemize}
+
+\item Given a non-negative integer represented as an array (e.g., 329 would be \texttt{[3, 2, 9]}) and an integer k, remove k digits from the number so that the new number is the smallest possible. Assume \texttt{k < arr.length}. Return the new number as an array.
+ % david has python solution in leetcode
+ 
+ 
+\begin{itemize}
+
+\item \texttt{[1,4,3,2,2,1,9], 3} $\rightarrow$ \texttt{[1,2,1,9]}.
+\item \texttt{[1,0,2,0,0], 1} $\rightarrow$ \texttt{[0,2,0,0]}
+\item \texttt{[8,5,9,3,4,3], 2} $\rightarrow$ \texttt{[5,3,4,3]}.
+
+\end{itemize}
+
+\item You are given the heads of two singly linked lists representing non-negative integers. I.e., the number 7,442 is represented by the linked list \texttt{[7->4->4->2]}. Return the sum of the two numbers represented by the linked lists. E.g. \texttt{[7->4->4-2] + [5->2->9] = 7971}. You may modify the lists. Assume neither head is null.  % katie has java solution in leetcode
+
+\end{enumerate}
+
+\clearpage
+
+
+\begin{center}
+    \textbf{Solutions}
+\end{center}
+
+\begin{enumerate}
+
+
+\item Solution:
+
+\begin{lstlisting}
+
+def valid_expr(s):
+    stack = Stack()
+    for c in s:
+        if not stack.isEmpty() and c == ')' and stack.peek() == '(':
+            stack.pop()
+        else:
+            stack.push(c)
+    return stack.isEmpty()
+
+\end{lstlisting}
+
+\item Solution: Keep an "in-stack" and an "out-stack". enqueue() items into the in-stack. Whenever dequeue() is called and out-stack is empty, transfer all items from the in-stack to the out-stack, then remove the element on top of the out-stack. Enqueue() is clearly O(1). Dequeue is amortized O(1), because for an item to be dequeued, on average it moves exactly twice. From in to out, and from out to the user.
+
+\item Solution:
+
+\begin{lstlisting}
+def pivot(int[] a):
+    p = a[0] # the pivot
+    int i = 1 # use i to keep track of where to place the small elements
+    for j in range(1, a.length)
+        if (a[j] < p):
+            swap elements at i and j
+            i++
+            
+    swap elements at 0 (where the pivot is) and
+            i-1 (the final element smaller than p)
+            
+    return i-1
+
+\end{lstlisting}
+
+\item Solution:
+
+\begin{lstlisting}
+
+def max_common_height(Stack[] stacks)
+
+    Init int[] heights, containing the sum of each stack
+    
+    while not (all elements in heights are equal):
+    
+        m = min(heights)
+        
+        # Pop elements of all stacks until they are shorter
+        # or equal in height to the current shortest stack
+        
+        for i in stacks.length:
+            while heights[i] > m:
+                heights[i]-=stacks[i].pop()
+    
+    # now all stacks are the same height. return one of them
+    return height[0]
+
+\end{lstlisting}
+
+\item Solution:
+
+\begin{lstlisting}
+
+def longestPalindrome(String s):
+    l=0 # the length of the longest palindrome we've found
+    
+    # we need to try starting our two pointers on the same element
+    # and also start them one apart
+    for m in [0, 1]:
+        for k in range(len(s)-m):
+            i = k
+            j = k+m
+            while i and j in bounds and s[i] == s[j],
+                decrement i, increment j
+            l = max(j-i-1, l)
+    return l
+
+\end{lstlisting}
+
+\item Solution
+
+\begin{lstlisting}
+def maximumSubarray(arr):
+    maxSoFar=arr[0], maxEndingHere=arr[0];
+    for i in range(1, arr.length):
+    	maxEndingHere = max(maxEndingHere+arr[i],arr[i])
+    	maxSoFar = max(maxSoFar, maxEndingHere);	
+    return maxSoFar;
+\end{lstlisting}
+
+\item Solution:
+
+\begin{lstlisting}
+
+def evalRPN(tokens):
+    stack = Stack()
+    for t in tokens:
+        if t not int:
+            stack.push(t)
+        else:
+            r, l = stack.pop(), stack.pop()
+            stack.push(applyOp(r, l, t))
+    return stack.pop()
+\end{lstlisting}
+    
+\item Solution:
+
+\begin{lstlisting}
+def removeKdigits(num, k):
+    arr = []
+    for i in num:
+        while arr not empty and i<arr[last]
+                and k>0:
+            arr.pop()
+            k-=1
+        if len(arr) < len(num) - k:
+            arr.append(i)
+    return arr
+
+\end{lstlisting}
+
+\item Solution:
+
+\begin{lstlisting}
+
+def sum_lists(a, b):
+
+    Reverse both linkedlists
+    Init carry int to 0
+    sum = 0
+    pow_ten = 1
+    
+    while not (at end of both lists):
+        x = value of a, if a is null then x = 0
+        y = value of b, if b is null then y = 0
+        z = x + y + carry
+        sum += pow_ten * (z mod 10)
+        carry = z / 10
+        pow_ten *= 10
+    return sum
+\end{lstlisting}
+
+\end{enumerate}
+
+\end{document}

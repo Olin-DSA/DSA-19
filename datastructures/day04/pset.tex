@@ -1,0 +1,229 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 4: HashMaps}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+    \maketitle
+
+    \subsection*{}
+
+    CORE:
+    \begin{enumerate}
+        %%%%% Problem 01 %%%%%
+        \item Given an array of int, write a function that returns a Map that maps from int to their appearance counts.
+        \begin{itemize}
+            \item \texttt{input} = [1, 1, 3, 4, 1, 4, 5] $\rightarrow$ return [1:3, 3:1, 4:2, 5:1]
+        \end{itemize}
+
+
+        %%%%% Problem 3 %%%%%
+        \item Given an array of integers, \texttt{A}, and a target sum, \texttt{s}, return the number of pairs of elements that add up to the target sum.  You may use each element only once.  For example: \\
+
+        If \texttt{A} = [2, 3, 5, 1, 4, 2, 6, 4, 8] and \texttt{s} = 8, the valid pairs are [(2, 6), (3, 5), (4, 4)], so you would return 3.  Note that there is only one instance of the pair (2, 6), because there are two elements with the value 2, but only one with the value 6. \\
+
+
+        %%%%% Problem 1 %%%%%
+        \item Given an array containing n tuples of points in a plane, a "boomerang" is a set of points (i, j, k) such that the distance between i and j is equal to the distance between j and k.  Find the number of boomerangs on the plane. Note that you can never have an odd number of boomerangs because every boomerang set counts twice, as it can be flipped. For example:
+
+        Given the set of points [(0,0),(1,0),(2,0)], you should return 2.  The boomerangs are [(0, 0), (1, 0), (2, 0)] and [(2,0), (1,0), (0,0)].
+
+        Hint: If you have $n$ points equidistant from point j, then there are $n*(n-1)$ total boomerangs with j at the center.
+
+    \end{enumerate}
+        %---------------------------------------------------
+
+    \subsection*{}
+    EXTENSION:
+    \begin{enumerate}
+        %%%%% Problem 2 %%%%%
+        \item  Given an array of integers, A, find the length of the longest subarray without repeating integers.  For example:
+
+        \begin{itemize}
+            \item One of the longest subarrays of [1, 2, 3, 1, 2, 3, 2, 2] is [1, 2, 3], which has a length of \textbf{3}.
+            \item The longest subarray of [1, 2, 3, 2, 1, 3, 4, 2, 2, 4] is [2, 1, 3, 4], which has a length of \textbf{4}.
+            \item The longest subarray of [2, 2, 2, 2, 2, 2] is [2], which has a length of \textbf{1}.
+        \end{itemize}
+         %%%%% Problem 4 %%%%%
+        \item Given a string, \texttt{pattern}, and another string, \texttt{str}, return true if \texttt{str} follows the same sequence as \texttt{pattern}.  'Following the sequence' means that every space separated word in \texttt{str} has a one-to-one correspondence to a letter in \texttt{pattern} (for the curious, this is a bijection in graph theory).  For example:
+
+        \begin{itemize}
+            \item \texttt{pattern} = "abba" and \texttt{str} = "dog cat cat dog" $\rightarrow$ return true
+            \item \texttt{pattern} = "abba" and \texttt{str} = "dog cat cat fish" $\rightarrow$ return false
+            \item \texttt{pattern} = "aaaa" and \texttt{str} = "dog cat cat dog" $\rightarrow$ return false
+            \item \texttt{pattern} = "abba" and \texttt{str} = "dog dog dog dog" $\rightarrow$ return false
+        \end{itemize}
+    \end{enumerate}
+        %-------------------------------------------------------
+    \subsection*{}
+    REVIEW:
+    \begin{enumerate}
+        \item You are given the head nodes of two singly linked lists representing non-negative integers. I.e., the number 7,442 is represented by the linked list [7$\rightarrow$4$\rightarrow$4$\rightarrow$2]. Return the sum of the two numbers represented by the linked lists.
+        \begin{itemize}
+            \item \texttt[7$\rightarrow$4$\rightarrow$4$\rightarrow$2] + [5$\rightarrow$2$\rightarrow$9] = 7971
+
+        \end{itemize}
+    \end{enumerate}
+    \clearpage
+    %%%%% SOLUTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{center}
+        \textbf{Solutions}
+    \end{center}
+
+    \begin{enumerate}
+        %%% Solution 1 %%%%%%%
+        \item Solution:
+        \begin{lstlisting}
+        public count(int[] arr) {
+            Map myMap = new Map<>();
+            for (int i = 0; i<arr.length; i++){
+                if (myMap.containsKey(arr[i])){
+                    myMap.put(arr[i],myMap.get(i)+1);
+                }
+                else{
+                    myMap.put(arr[i],1)
+                }
+            }
+            return myMap;
+        }
+        \end{lstlisting}
+
+        %%%%% Solution 2 %%%%%
+        \item Solution:
+
+        \begin{lstlisting}
+
+        def twoSum(int[] nums, int target):
+
+        map = new Map<>();
+
+            # generate a count map of nums
+            for n in nums:
+            map.put(map.getOrDefault(n, 0) + 1)
+            ans = 0
+
+            for n1 in map.keys:
+                n2 = target-n1
+                if n2 in map.keys:
+                    ans++
+                    map.put(n1, map.get(n1) - 1)
+                    map.put(n2, map.get(n2) - 1)
+                    if map.get(n1) is 0 or map.get(n2) is 0:
+                        remove the key with value 0 from map
+
+            return ans
+        }
+        \end{lstlisting}
+
+        %%%%% Solution 3 %%%%%
+        \item Solution:
+
+        \begin{lstlisting}
+        public int numberOfBoomerangs(int[][] points) {
+            int res = 0;
+
+            Map<Integer, Integer> map = new HashMap<>();
+            for(int i=0; i<points.length; i++) {
+                for(int j=0; j<points.length; j++) {
+                    if(i == j)
+                        continue;
+
+                    int d = getDistance(points[i], points[j]);
+                    map.put(d, map.getOrDefault(d, 0) + 1);
+                }
+
+                for(int val : map.values()) {
+                    res += val * (val-1);
+                }
+                map.clear();
+            }
+
+            return res;
+        }
+
+        private int getDistance(int[] a, int[] b) {
+            int dx = a[0] - b[0];
+            int dy = a[1] - b[1];
+
+            return dx*dx + dy*dy;
+        }
+
+        \end{lstlisting}
+
+        %%% Solution 4 %%%%%%%%%%%
+        \item Solution:
+        \begin{lstlisting}
+        lengthOfLongestSubstring(int[] A) {
+
+            n = s.length()
+            ans = 0
+            start = 0 # the start of the current sliding window
+            last_seen = new Map()
+
+            for index, num in A
+                if last_seen.containsKey(num)
+                    start = max(start, last_seen.get(num) + 1);
+                last_seen.put(num, index)
+                ans = max(ans, index - curr_start + 1);
+
+            return ans;
+        }
+        \end{lstlisting}
+
+        %%% Solution 5 %%%%%%%%%%%%
+        \item Solution:
+        \begin{lstlisting}
+            public boolean wordPattern(String pattern, String str) {
+            String[] words = str.split(" ");
+            if (words.length != pattern.length())
+                return false;
+            Map index = new HashMap();
+            for (Integer i=0; i<words.length; ++i)
+                if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
+                    return false;
+            return true;
+        }
+        \end{lstlisting}
+
+        %%%% Solution 6 %%%%%%%%%%
+        \item Solution:
+        \begin{lstlisting}
+        public sum(Node head1, Node head2) {
+            int sum1, sum2;
+            while(head1!=null){
+                sum1 = sum1*10;
+                sum1 += head1.data;
+                head1 = head1.next;
+            }
+            while(head2!=null){
+                sum2 = sum2*10;
+                sum2 += head2.data;
+                head2 = head2.next;
+            }
+            return sum1+sum2;
+        }
+        \end{lstlisting}
+
+    \end{enumerate}
+
+\end{document}
