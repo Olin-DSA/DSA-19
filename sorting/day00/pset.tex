@@ -1,0 +1,131 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 5: Sorting}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{}
+
+\begin{enumerate}
+
+\item Given an array, return true if the array has a duplicate element in it.
+
+\item Suppose you have an array A[] of N distinct items which is nearly sorted: each item at most k positions away from its position in the sorted order. Design an algorithm to sort the array in O(Nlogk) time.
+	
+%%%%% PROBLEM 1 %%%%%
+\item Given a list of \texttt{Interval}s as defined in the \texttt{Interval} class below, merge overlapping \texttt{Interval}s and output the resulting list of mutually exclusive \texttt{Interval}s.  For example:
+
+\begin{itemize}
+    \item Given the list of \texttt{Interval}s \texttt{[(2,4), (5,7), (1,3), (6,8)]}, the  intervals \texttt{(1,3)} and \texttt{(2,4)} overlap with each other, so they should be merged and become \texttt{(1,4)}. \texttt{(5,7)} and \texttt{(6,8)} also overlap, creating \texttt{(5,8)}.  The final solution for this list of \texttt{Interval}s would be \texttt{[(1,4), (5,8)]}.
+\end{itemize}
+
+The definition for the Intervals class is as follows:
+
+\begin{lstlisting}[language=Java]
+ public class Interval {
+    int start;
+    int end;
+    Interval(int s, int e) { start = s; end = e; }
+ }
+\end{lstlisting}
+    
+%%%%% PROBLEM 2 %%%%%
+\item Given the head of a linked list, sort it in place using O($n$log$n$) time and O(logN) space.
+    
+\end{enumerate}
+
+\clearpage
+
+\begin{lstlisting}[language=Python]
+def contains_duplicate(A):
+    # O(N) time, O(N) space
+    s = set()
+    for i in A:
+        if i in s:
+            return False
+        s.add(i)
+
+# A is sorted from [lo, mid) and [mid, hi). Sorts elements from [lo, hi)
+def merge(A, lo, mid, hi):
+    i = lo
+    j = mid
+    B = []
+    while (i < mid) or (j < hi):
+        if (i == mid) or (j < hi and (A[j] < A[i])):
+            B.append(A[j])
+            j += 1
+        else:
+            B.append(A[i])
+            i += 1
+    for k in range(lo, hi):
+        A[k] = B[k - lo]
+
+# Sort element in [lo, hi)
+def mergeSort(A, lo, hi):
+    if hi - lo < 2:
+        return
+    mid = (hi + lo) / 2
+    mergeSort(A, lo, mid)
+    mergeSort(A, mid, hi)
+    merge(A, lo, mid, hi)
+
+
+def sortK(A, k):
+    # first, sort from [0, 2k). After this, first k smallest elements are in
+    # the correct position. then sort from [k, 3k). Now, the first 2k smallest
+    # elements are in the correct position. Continue across the entire array.
+    # This inner loop runs (N/k) times. Each loop iteration performs a
+    # mergesort on a length-k array, which is complexity klogk. Therefore,
+    # overall complexity is Nlogk.
+    for i in range(0, len(A), k):
+        mergeSort(A, i, min(i + 2*k, len(A)))
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+MERGE_INTERVALS(intervals) {
+    intervals.sortByStartTime();
+    
+    // use an iterator here
+    for (interval i : intervals) {
+        while (i.end > i.next.start) {
+            // merge sets i.end to max(i.end, i.next.end)
+            merge(i, i.next);
+        }
+    }
+}
+
+SORT_LINKED_LIST(linkedlist) {
+    leftList, rightList = split(linkedlist)
+    SORT_LINKED_LIST(leftList)
+    SORT_LINKED_LIST(rightList)
+    merge(leftList, rightList)
+    }
+}
+
+\end{lstlisting}
+
+\end{document}
