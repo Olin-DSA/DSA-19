@@ -56,4 +56,4 @@ To be checked off, you'll be expected to explain (among other things):
 
 ### Survey
 
-Fill out the survey [here](tinyurl.com/OlinDSA-04).
+Fill out the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSdfCkTb6KQBgbRO-ZWVyaXdAFfIDGIsKAVs6Z0rp0Cn9Wjf1Q/viewform).
