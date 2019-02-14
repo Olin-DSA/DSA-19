@@ -12,7 +12,7 @@ By doing this assignment, you should be able to:
   
 ## Resources
 
-* We created a set of [slides](https://drive.google.com/open?id=1jEnFGECA8TaZM9TyAmEOQum1VT4hY35N) to help you visualize merge sort.
+* We created a set of [slides](https://docs.google.com/presentation/d/1ocOTiwYzShih0n6G0IoGo7s84NR7geqMM8Y1KTvm6rY/edit?usp=sharing) to help you visualize merge sort.
 * Refer to [`hints.md`](https://github.com/Olin-DSA/DSA-19/blob/master/sorting/day00/hints.md) if you need additional help.
 
 
