@@ -11,6 +11,7 @@ By doing this assignment, you should be able to
 * Understand the runtime of the linear-in-N sorts
 
 ## Resources
+* [Our slides on linear sorts](https://drive.google.com/open?id=1EjfT7qQPaFZj3ZtbKBQkr2W1TY8v-RV5m9KtNs2o6tU)
 * [Slides on linear sorting](https://drive.google.com/open?id=1W7X7p5-jymr_jNh_RdQIAyWLeu2VhIjH)
 * [Counting Sort - MIT OCW Lecture 37:00 - 44:30](https://youtu.be/Nz1KZXbghj8?t=37m1s)
 * [Counting Sort - MIT OCW Lecture Notes](https://drive.google.com/file/d/0B_K4P69ad_l_TTNDUFM1QzA3OFk/view)
