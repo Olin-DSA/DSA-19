@@ -69,4 +69,4 @@ Given an array of integers, return the number of swaps that must be performed be
 * Go to NINJA hours to get checked off (on or before Monday, February 25th).
 * Provide an explanation and time complexities for both counting sort and radix sort.
 * Talk through the problems with the Ninja
-* Complete the [survey]([survey](https://tinyurl.com/OlinDSA-08)).
+* Complete the [survey](https://tinyurl.com/OlinDSA-08).
