@@ -1,0 +1,104 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 9: Divide and Conquer}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{}
+
+For each of the following problems, start by thinking through what the Base Case, Divide, Conquer, and Combine steps for your algorithm would be. As always, make sure you determine the runtime of your algorithm (before implementing).
+
+\begin{enumerate}
+
+\item Design a divide and conquer algorithm that returns a^b. Your algorithm must run in better than O(b). You can assume multiplication runs in O(1) time.
+
+\item Design an algorithm that finds the kth smallest element in an unsorted array.
+
+\item An array is right-rotated by $k$ if every element in the array is shifted to the right $k$ indices, wrapping around to the beginning from the end. For example, right rotating $[1, 2, 3, 4, 5, 6, 7]$ by $3$ results in $[5, 6, 7, 1, 2, 3, 4]$.
+
+You are given an array that once was sorted and had no duplicate values, but has been right-rotated by some unknown value $k$. You know that the array is in ascending order. Return $k$.
+
+For instance, $getK([2,4,5,22,33,-10,-4,0,1]=5$ because the original sorted array must have been $[-10,-4,0,1,2,4,5,22,33]$.
+
+\item Given two sorted arrays \texttt{A} and \texttt{B}, return the \texttt{k}th smallest element in their union. Justify to an instructor your algorithm's runtime.
+
+\end{enumerate}
+
+\clearpage
+
+
+\begin{lstlisting}[language=Java]
+
+// O(log(b))
+int pow(int a,int b)
+{
+    if(b == 0) return 1;
+    else if(b % 2 == 0) return pow(a,b/2) * pow(a,b/2);
+    else return a * pow(a,b-1);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+
+// O(log(k))
+FIND_KTH(k, A, B, s1, s2) {
+    if (A or B is empty) {
+        return kth element in (B or A) ; // take note of starting indices s1/s2
+    }
+    
+    if (k == 0) {
+        return min of A[s1] and B[s2];
+    }
+    
+    midIndexA = s1 + k/2;
+    midIndexB = s2 + k/2;
+    
+    midValueA = A[midIndexA] if within bounds else INF;
+    midValueB = B[midIndexB] if within bounds else INF;
+
+    // discard k/2 values from either A or B, depending on which mid element is smaller
+    if (midValueA < midValueB) {
+        return FIND_KTH(k-k/2, A, B, midIndexA+1, s2);
+    } else {
+        return FIND_KTH(k-k/2, A, B, s1, midIndexB+1);
+    }
+    
+}
+
+GET_K(arr,beginI=0,endI=arr.length-1):
+    if(beginI == endI) return beginI
+    midI = (beginI + endI)/2
+    # is midI where the array breaks? (the weird modulus stuff is in case midI = 0)
+    if(arr[midI] < arr[(midI - 1 + arr.length)%array.length]) return midI
+    
+    # on which side of midI does the array break
+    if(arr[midI] < arr[beginI] return GET_K(arr,beginI,midI-1)
+    else return GET_K(arr,midI+1,endI)
+\end{lstlisting}
+
+
+\end{document}

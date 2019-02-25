@@ -1,0 +1,140 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 12: Intro to Binary Trees}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{}
+
+Note that for the following problems, you are operating on a \textbf{binary tree}. This is different from a BST.
+
+\begin{enumerate}
+
+%%%%% PROBLEM 1 %%%%%
+\item Given the root of a binary tree of integers, return the sum of all elements in the given tree.
+
+\item Given the root of a binary tree of integers, return the number of leaves in the given tree.
+
+\item Given the root of a binary tree of integers, return the height of the tree. Remember that the height is defined as the distance from the root node to the furthest node from it.
+
+\item Given the root of a binary tree of integers, return whether a given integer exists or not in the tree. Now, given the root of some binary \textbf{search} tree of integers, return whether a given integer exists or not in the tree.
+
+\item You are given the root of a tree and two elements. You can assume that these elements exist in the given tree. Find the least common ancestor of the two elements. The least common ancestor of two nodes is the furthest node from the root of the tree such that the tree rooted at that node contains both of the elements. For example:
+
+\begin{lstlisting}
+    _______3______
+   /              \
+ __5__          ___1__
+/     \        /      \
+6      2      0        8
+      / \
+     7   4
+\end{lstlisting}
+
+The least common ancestor of 7 and 1 is 3. The LCA of 6 and 5 is 5. The LCA of 6 and 4 is 5.
+
+\end{enumerate}
+
+\noindent The problem below is part of the homework. You try to do it now if you are able to finish all the problems from above.
+
+\begin{enumerate}
+
+\item Two trees $T_1$ and $T_2$ are isomorphic if $T_1$ can be transformed to $T_2$ by swapping the left and right children of any of the nodes in $T_1$. Write a function that determines if two trees are isomorphic. You are given their root nodes.
+
+\end{enumerate}
+
+\clearpage
+
+\begin{lstlisting}[language=Java]
+TREE_SUM(root):
+    if (root==null) return 0
+    return root.data + TREE_SUM(root.left) + TREE_SUM(root.left)
+
+NUM_LEAVES(root):
+    if (root==null) return 0
+    if root has no children:
+        return 1
+    return NUM_LEAVES(root.left) + NUM_LEAVES(root.right)
+
+TREE_HEIGHT(root):
+    if (root==null) return -1
+    return 1 + max(TREE_HEIGHT(root.left) + TREE_HEIGHT(root.right))
+
+CHECK_TREE(root, elem):
+    if (root==null) return false
+    if (root.data==elem) return true
+    return CHECK_TREE(root.right,elem) || CHECK_TREE(root.left,elem)
+
+CHECK_BSTREE(root, elem):
+    if (root==null) return false
+    if (root.data==elem) return true
+    if (elem < root.data) return CHECK_BSTREE(root.left, elem)
+    else return CHECK_BSTREE(root.right, elem)
+
+LCA(root, node1, node2):
+    if (root == null || root == node1 || root == node2) return root
+    left = LCA(root.left, node1, node2)
+    right = LCA(root.right, node1, node2)
+    if(left == null) return right
+    if(right == null) return left
+    return root
+
+ARE_ISOMORPHIC(root1, root2):
+    if(root1 == null && root2 == null) return true
+    if(root1 == null || root2 == null) return false
+    if(root1.data != root2.data) return false
+    return (AI(root1.left,root2.left) && AI(root1.right,root2.right)) ||
+           (AI(root1.left,root2.right) && AI(root1.left,root2.right))
+
+\end{lstlisting}
+
+% FIND_KTH(k, A, B, s1, s2) {
+%     if (A or B is empty) {
+%         return kth element in (B or A) ; // take note of starting indices s1/s2
+%     }
+
+%     if (k == 1) {
+%         return min of A[s1] and B[s2];
+%     }
+
+%     midIndexA = s1 + k/2 - 1;
+%     midIndexB = s2 + k/2 - 1;
+
+%     midValueA = A[midIndexA] if within bounds else INF;
+%     midValueB = B[midIndexB] if within bounds else INF;
+
+%     if (midValueA < midValueB) {
+%         return FIND_KTH(k-k/2, A, B, midIndexA+1, s2);
+%     } else {
+%         return FIND_KTH(k-k/2, A, B, s1, midIndexB+1);
+%     }
+
+% }
+
+
+
+\end{document}
