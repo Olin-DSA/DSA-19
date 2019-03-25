@@ -1,6 +1,6 @@
 # Graphs Day 01 - Recursive Backtracking
 
-This assignment is due Thursday, March 28
+This assignment is due Monday, April 1
 
 # Resources
 
@@ -17,7 +17,8 @@ Students should be able to:
 
 # Assignment
 
-**Do (at least) 3 of the following problems**
+**Do (at least) 3 of the following problems (4 for an extra late day)**
+
 
 ## Permutations
 
@@ -104,9 +105,11 @@ for (int i: randomOrder()) {
 ```
 
 
-### (Optional) Optimizations
+### (Optional for 1 late day) Optimizations
 
 Certain implementations of this algorithm may be really slow on longer test cases. You may be able to optimize your code by making assignments from right-to-left in the strings, and terminating early when you make an assignment that couldn't be correct. For example, in the `SEND + MORE = MONEY` case, if we assign `D` and `E` to `4`, and `Y` to `7`, we already know this assignment will be incorrect.
+
+
 
 ## Checkoffs
 - Know the space and time complexity of your algorithms
