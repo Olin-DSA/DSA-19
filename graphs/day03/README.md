@@ -14,6 +14,7 @@ You may work with a partner for this week long assignment, also the team with th
     - [Interactive visualization of search algorithms(2)](https://www.redblobgames.com/pathfinding/a-star/implementation.html)
     - [Good resource on Jump Point Search with additional links at the end](https://zerowidth.com/2013/05/05/jump-point-search-explained.html)
     - [Introduction to RSR, another technique for dealing with empty space](http://aigamedev.com/open/tutorial/symmetry-in-pathfinding/)
+- [Brendan's Code](https://drive.google.com/open?id=1-3OVzz_tA8NNTDl6wtX7MKvNxOlsa-gt)
 - [Really cool interactive visualization](https://qiao.github.io/PathFinding.js/visual/?fbclid=IwAR25oMLOLacYv5nhXa3F8qTSS5vQEyzNrHC9DdPpKUuvo0UJkncsKl6pxPM)
 - [Our slides from last year](https://drive.google.com/open?id=1Os4-DFjbszsk5xuS3YqUM1286knAbGDp)
 - [Introduction to Dijkstra](https://courses.cs.washington.edu/courses/cse373/17su/lectures/Lecture%2016%20-%20Dijkstra's%20Algorithm.pdf)
