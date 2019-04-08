@@ -6,6 +6,19 @@ Create the necessary classes to implement an 8-puzzle solver.  If you need a rem
 
 A very basic set of tests has been provided, but it is up to you to create any other intermediary tests that may be necessary / helpful.
 
+You may work with a partner for this week long assignment, also the team with the fastest running algorithm will win a prize (historically a huge chocolate bar but we're flexible). So, make any time saving choices you can **without** compromising the A* algorithm, e.g. using more efficient hashing or a better (valid) heuristic is okay but saving the answer, overfitting to the tests, or using algorithm that does not gaurantee shortest path is not.
+
+## Other Resources
+- [Brendan's Slides](https://docs.google.com/presentation/d/1XoNUmTvc56hEAQJ7DbnZcHAssUdFxeWXPwreey-bo3g/edit?usp=sharing)
+    - [Interactive visualization of search algorithms](https://www.redblobgames.com/pathfinding/a-star/introduction.html) 
+    - [Interactive visualization of search algorithms(2)](https://www.redblobgames.com/pathfinding/a-star/implementation.html)
+    - [Good resource on Jump Point Search with additional links at the end](https://zerowidth.com/2013/05/05/jump-point-search-explained.html)
+    - [Introduction to RSR, another technique for dealing with empty space](http://aigamedev.com/open/tutorial/symmetry-in-pathfinding/)
+- [Brendan's Code](https://drive.google.com/open?id=1-3OVzz_tA8NNTDl6wtX7MKvNxOlsa-gt)
+- [Really cool interactive visualization](https://qiao.github.io/PathFinding.js/visual/?fbclid=IwAR25oMLOLacYv5nhXa3F8qTSS5vQEyzNrHC9DdPpKUuvo0UJkncsKl6pxPM)
+- [Our slides from last year](https://drive.google.com/open?id=1Os4-DFjbszsk5xuS3YqUM1286knAbGDp)
+- [Introduction to Dijkstra](https://courses.cs.washington.edu/courses/cse373/17su/lectures/Lecture%2016%20-%20Dijkstra's%20Algorithm.pdf)
+
 ## `Board` Class
 
 Write the class `Board.java` to represent a state of the puzzle board. The following methods will build toward that, along with any other methods you deem helpful.
