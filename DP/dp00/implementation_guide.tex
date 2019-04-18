@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{\vspace{-1cm}Dynamic Programming Implementation Guide}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.5in]{geometry}
+
+\usepackage{listings}
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+\maketitle
+
+\subsection*{Bottom-up}
+
+\begin{enumerate}
+    \item \textbf{initialize memo}
+    
+If using an array, make sure you initialize it to the correct size (usually size \texttt{N + 1}, to store all \texttt{N} subproblems plus the base case). If using a hashmap, you don't have to worry about sizing.
+
+    \item \textbf{store base case in memo}
+    
+    \item \textbf{iterate over subproblems}
+    
+Using a loop, iterate the indices into your memo over the subproblems. Pay attention to the direction of the dependencies in the recurrence relation. E.g., for \texttt{DP[i] = min(DP[i+1], DP[i+2])}, you must solve the problems in \textit{descending} order for \texttt{i}. Generally speaking, you should solve the smallest problems first.
+    
+    \item \textbf{solving subproblems}
+    
+    In your loop, calculate \texttt{DP[key]} (\texttt{key} may be one or more indices, potentially something else) using your recurrence relation. Often you will take the \texttt{min} or \texttt{max} of all possible guesses.
+    
+    \item \textbf{store answer to subproblems}
+    
+    Store the result in \texttt{DP[key]}.
+    
+    \item \textbf{return answer to original problem}
+    
+    This should be a value in your memo.
+    
+\end{enumerate}
+
+\subsection*{Top-down}
+
+\begin{enumerate}
+
+    \item \textbf{initialize memo}
+    
+In a public facing function, initialize your memo. If using an array, make sure you initialize it to the correct size (usually size \texttt{N + 1}, to store all \texttt{N} subproblems plus the base case). If using a hashmap, you don't have to worry about sizing. If you are using an array, you might want to fill it with a special value to indicate that the subproblems are currently unsolved.
+
+    \item \textbf{store base case in memo}
+    
+    \item \textbf{create private recursive function}
+
+This function's purpose is to return the solution to subproblems (i.e., it returns \texttt{DP[key]}). This function's inputs should contain the memo, the key value(s) for the memo (e.g., \texttt{i} and \texttt{j}), and any other data needed (often the input to your public function is also an input to your private function).
+    
+    \item \textbf{check if memo has solution}
+
+In the recursive function, check if your memo already contains a solution for the given input key value. If it does, return the value in the memo.
+    
+    \item \textbf{solving subproblems}
+    
+In your recursive function, use your recurrence relation to calculate \texttt{DP[key]}. \textbf{Don't explicitly access values in your memo. Instead, call the recursive function.} For example, for Fibonacci:
+
+\begin{lstlisting}[language=Java]
+
+private int fib_recurs(int i, int[] DP) {
+    if (DP[i] != -1) return DP[i];
+    DP[i] = DP[i-1] + DP[i-2]; // don't do this
+    DP[i] = fib_recurs(i-1, DP) + fib_recurs(i-2, DP); // do this instead
+    return DP[i];
+}
+
+\end{lstlisting}
+
+    \item \textbf{store and return answer to subproblem}
+ 
+Store the answer to the subproblem in your memo and return it (this is shown above)
+
+    \item \textbf{return answer to original problem}
+    
+    In your public function, use your recursive function to solve the problem and return it, e.g., \texttt{return fib\_recurs(10, DP)}.
+    
+\end{enumerate}
+
+
+\end{document}

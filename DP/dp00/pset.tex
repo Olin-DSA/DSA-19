@@ -1,0 +1,55 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{Dynamic Programming 00}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{}
+
+
+For the problems below, identify the subproblem, guess, recurrence relation, and time complexity using dynamic programming. If you finish, also try coding them up.
+
+\begin{enumerate}
+
+%%%%% PROBLEM 1 %%%%%
+\item Professor Prava is curious how many 6-sided dice roll sequences there are that reach a sum of \texttt{N}. For example, if \texttt{N=10}, one possible sequence is: \texttt{6, 2, 2}. Another is \texttt{[2, 6, 2]}. Another is \texttt{[3, 3, 3, 1]]}. Using DP, determine how many sequences there are for any given \texttt{N}.
+
+\item Given an unsorted array of integers, what is the length of the longest increasing subsequence? Subsequence is defined as: a sequence that can be derived from the array by removing zero or more elements. Some examples:
+
+\begin{itemize}
+    \item Given \texttt{[5, 3, 1, 5, 8, 10]}, the LIS is \texttt{[3, 5, 8, 10]}, so your function returns \texttt{4}.
+    \item Given \texttt{[5, 4, 3, 4, 2, 5]}, the LIS is \texttt{[3, 4, 5]}, so your function returns \texttt{3}.
+    \item Given \texttt{[1, 2, 3]}, return \texttt{3}.
+    \item Given \texttt{[3, 2, 1]}, return \texttt{1}.
+\end{itemize}
+
+\item Given two strings, return the length of their longest common subsequence (subsequence defined above). For example, given \texttt{NATHAN} and \texttt{PRAVA}, the LCS is \texttt{AA}, so your function should return \texttt{2}.
+
+\end{enumerate}
+
+
+\end{document}

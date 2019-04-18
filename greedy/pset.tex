@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 22: Greedy Algorithms}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{enumerate}
+
+%%%%% PROBLEM 1 %%%%%
+\item There are a number of spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it's horizontal, y-coordinates don't matter and hence the x-coordinates of start and end of the diameter suffice. Start is always smaller than end.
+
+An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with $x_{start}$ and $x_{end}$ bursts by an arrow shot at x if $x_{start} \leq x \leq x_{end}$. There is no limit to the number of arrows that can be shot. An arrow once shot keeps travelling up infinitely. Find the minimum number of arrows that must be shot to burst all balloons.
+
+%%%%% PROBLEM 2  %%%%%
+\item Given a string of characters, use the greedy approach to find the best possible encoding of each character such that the encoded binary output uses the fewest number of bits.
+
+For example, given "Steelman eats an eel", one of the most efficient ways to encode each letter is:
+\begin{center}
+ \begin{tabular}{||c c||}
+ \hline
+ Letter & Code  \\ [0.5ex]
+ \hline\hline
+ e & 01  \\
+ \hline
+ a & 11  \\
+ \hline
+ s & 001 \\
+ \hline
+ l & 101 \\
+  \hline
+ t & 100 \\
+  \hline
+ n & 0001 \\
+ \hline
+ m & 0000\\ [1ex]
+ \hline
+
+\end{tabular}
+\end{center}
+ Total space = code size * frequency of all letters = 31
+
+%%%%% PROBLEM 3 %%%%%
+\item Professor Yee drives an automobile from Needham to Atlantic City to gamble and win some moolah. His car's gas tank, when full, holds enough gas to travel $n$ miles, and his map gives the distance between gas stations on his route. The professor wishes to make as few gas stops as possible along the way. Give an efficient method by which Professor Yee can determine at which gas stations he should stop, and \textit{prove} that your strategy yields an optimal solution.
+
+
+\end{enumerate}
+\end{document}
