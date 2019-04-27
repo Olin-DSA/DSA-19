@@ -1,0 +1,219 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 11: BST Review and LLRB Trees}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Core}
+
+
+\begin{enumerate}
+
+\begin{lstlisting}[language=Java]
+public class RBNode<T> {
+    T key;
+    RBNode<T> leftChild, rightChild;
+    boolean isRed;
+}
+\end{lstlisting}
+
+
+\item  Write a function \texttt{is23(RBNode n)} that, given the root of a RB-tree, checks that no node is connected to two red links and that there are no right-leaning red links.
+
+\item  Write a function \texttt{isBalanced(RBNode n)} that, given the root of a RB-tree, checks that all paths from the root to a null link have the same number of black links.
+
+\item Write a function \texttt{isLLRB(RBNode n)} which returns true if n is the root of a valid LLRB.
+\end{enumerate}
+\subsection*{Review}
+\begin{enumerate}
+
+
+\item Given the root of a binary tree, return the length of the furthest path between two leaves. Assume you have access to the heights of each node. 
+
+Can you do it faster than O(N)?
+
+
+\item You are given the root of a tree and two elements. You can assume that these elements exist in the given tree once. Find the least common ancestor of the two elements. The least common ancestor of two nodes is the furthest node from the root of the tree such that the tree rooted at that node contains both of the elements. For example:
+
+\begin{lstlisting}
+    _______3______
+   /              \
+ __5__          ___1__
+/     \        /      \
+6      2      0        8
+      / \
+     7   4
+\end{lstlisting}
+
+The least common ancestor of 7 and 1 is 3. The LCA of 6 and 5 is 5. The LCA of 6 and 4 is 5.
+
+
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+    \item 
+
+\begin{lstlisting}[language=Java]
+    public boolean is23() {
+        return is23(root);
+    }
+
+    // return true if this LLRB is a valid 2-3 tree
+    private boolean is23(TreeNode<T> n) {
+        if (n == null) return true;
+        if (isRed(n.rightChild)) return false;
+        if (isRed(n.leftChild) && isRed(n.leftChild.leftChild)) return false;
+        return is23(n.rightChild) && is23(n.leftChild);
+    }
+\end{lstlisting}
+
+\item
+
+
+\begin{lstlisting}[language=Java]
+
+    public boolean isBalanced() {
+        return isBalanced(root) != -1;
+    }
+
+    // return -1 if the tree is not balanced. Otherwise, return the
+    // black-height of the tree
+    private int isBalanced(TreeNode<T> n) {
+        if (n == null) return 0;
+        int lBalanced = isBalanced(n.leftChild);
+        int rBalanced = isBalanced(n.rightChild);
+        if (lBalanced == -1 || rBalanced == -1) return -1;
+        if (isBlack(n.leftChild)) lBalanced++;
+        if (isBlack(n.rightChild)) rBalanced++;
+        if (lBalanced != rBalanced) return -1;
+        return lBalanced;
+    }
+
+\end{lstlisting}
+
+\item
+
+
+\begin{lstlisting}[language=Python]
+
+isLLRB(RBNode n):
+    return isBalanced(n) and is23(n)
+
+\end{lstlisting}
+
+\item
+
+
+\begin{lstlisting}[language=Python]
+
+largestSpan(RBNode n):
+    # the idea behind this is the maximum span necessarily
+    # has to involve the node with the maximum depth
+    # so we recurse down to that node, then check the 
+    # height of all the sibling nodes back up and update 
+    # the span accordingly
+    if n is None:
+        return 0
+    elif n.RC is None or n.LC.w is None:
+        return max(largestSpan(n.LC), largestSpan(n.RC))
+    elif  n.LC.w > n.RC.w:
+        return max(largestSpan(n.LC), 1 + n.LC.w + n.RC.w)
+    return max(largestSpan(n.RC), 1 + n.LC.w + n.RC.w)
+        
+    
+
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=Java]
+LCA(root, node1, node2):
+    if (root == null || root == node1 || root == node2) return root
+    left = LCA(root.left, node1, node2)
+    right = LCA(root.right, node1, node2)
+    if(left == null) return right
+    if(right == null) return left
+    return root
+\end{lstlisting}
+    
+    
+\end{enumerate}
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+
+\end{document}
+% \item A binary search tree and a circular doubly linked list are conceptually built from the same type of nodes - a data field and two references to other nodes. Given a binary search tree, rearrange the references so that it becomes a circular doubly-linked list (in sorted order). Your LinkedList class will be very similar to our implementation in previous classes:
+
+% \begin{lstlisting}[language=Java]
+% public class Node {
+%     int val;
+%     Node prev, next;
+% }
+
+% public class CircularLinkedList {
+%     Node head, tail;
+% }
+
+% \end{lstlisting}
+
+
+% The only difference being that \texttt{head.prev} points to \texttt{tail}, and \texttt{tail.next} points to \texttt{head}.
+
+% \begin{lstlisting}[language=Python]
+
+% bstToLL(TreeNode treenode):
+%     if treenode is null:
+%         return treenode
+
+%     L = bstToLL(treenode.left)
+%     R = bstToLL(treenode.right)
+%     N = new LLNode(treenode.val)
+%     head = N
+%     tail = N
+%     if L:
+%         # connect middle to left
+%         L.tail.next = N
+%         N.prev = L.tail
+%         head = L.head
+%     if R:
+%         # connect middle to right
+%         R.head.prev = N
+%         N.next = R.head
+%         tail = R.tail
+
+%     # connect left to right
+%     head.prev = tail
+%     tail.next = head
+
+%     return new CircularLinkedList(head, tail)
+
+
+% \end{lstlisting}

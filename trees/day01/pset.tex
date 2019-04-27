@@ -1,0 +1,153 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 13: AVL Trees}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Core}
+
+
+\begin{enumerate}
+
+% %%%%% PROBLEM 1 %%%%%
+% \item Given this balanced AVL with nodes added in order: $[2, 1, 5, 4, 6]$, perform the necessary rotations to get the tree balanced again after the call to \texttt{insert(3)}.
+
+
+% %%%%% PROBLEM 2 %%%%%
+% \item Given this balanced AVL with nodes added in order: $[20,10,30,5,25,40,35,45]$, perform the necessary rotations to get the tree balanced again after the call to \texttt{insert(34)}.\\ 
+% \textit{Hint: this is not the same case as above}.
+
+
+%%%% POSSIBLE PROBLEM 1 %%%%%
+
+\item For the following two cases, draw the AVL trees on the board and list the necessary rotations (eg, \texttt{rotateRight(15), rotateLeft(25), ...}) to get the tree balanced again after the call to \texttt{insert()}.
+
+\begin{enumerate}
+    \item Given this balanced AVL with nodes added in order: $[2, 1, 5, 4, 6]$, call \texttt{insert(3)}.
+    
+    \item Given this balanced AVL with nodes added in order: $[20,10,30,5,25,40,35,45]$, call \texttt{insert(34)}.
+\end{enumerate}
+
+
+%%%%% PROBLEM 3 %%%%%
+\item Given the root of a BST, determine if it is a valid AVL tree.
+
+
+%%%%% PROBLEM 4 %%%%%
+\item Given the root of an AVL tree, return the median value in the tree.  For example, for the tree created by adding the following nodes in order: $[2, 7, 4, 9, 1, 5, 8, 3, 6]$, the median should be 5. Can you improve your solution if you're allowed to augment the data structure?
+
+\end{enumerate}
+
+\subsection*{Extension}
+
+
+\begin{enumerate}
+
+
+\setcounter{enumi}{3}
+
+%%%%% PROBLEM 5 %%%%%
+\item Given the root node of an AVL tree and a target sum integer, return true if the tree has a root to leaf path where adding up the values of every node in the path gives the target sum.
+
+
+%%%%% PROBLEM 6 %%%%%
+\item Convert an AVL tree to a sorted doubly-linked list by editing the pointers of the tree.  Do not create any new nodes.
+
+
+\end{enumerate}
+
+\clearpage
+
+%%%%% SOLUTION 1 %%%%%
+
+
+
+\begin{lstlisting}
+
+1. 
+a) Rotate right on 5 then rotate left on 4
+b) Rotate right 40, rotate left 30
+
+2.
+checkValid(root):
+    if root == null:
+        return true
+    if abs(rightChild.height - leftChild.height) >= 2:
+        return false
+    return checkValid(leftChild) && checkValid(rightChild)
+    
+3.
+O(n) version
+
+getMedian(root):
+    count = iotCount(root)
+    if count mod 2 == 0:
+        return iotToKey(root, count/2)
+    else
+        return (iotToKey(root, count/2) + iotToKey(root, (count/2)+1))/2
+
+
+Better version (if augmented) is to store the size 
+of the left and right subtrees of each node.
+
+4.
+sumPath(root, sum):
+    if node == null:
+        return sum==0
+    else
+    
+        currSum = sum - root.value
+        
+        if curr=0 && rightChild==null && leftChild==null:
+            return sumPath(rightChild, currSum)
+        if rightChild
+            return sumPath(leftChild, currSum)
+        else:
+            return false
+        
+5.
+    1. If left subtree exists, process the left subtree
+    …..1.a) Recursively convert the left subtree to DLL.
+    …..1.b) Then find inorder predecessor of root in left subtree 
+    (inorder predecessor is rightmost node in left subtree).
+    …..1.c) Make inorder predecessor as previous of root and root as next 
+    of inorder predecessor.
+    2. If right subtree exists, process the right subtree (Below 3 steps 
+    are similar to left subtree).
+    …..2.a) Recursively convert the right subtree to DLL.
+    …..2.b) Then find inorder successor of root in right subtree 
+    (inorder successor is leftmost node in right subtree).
+    …..2.c) Make inorder successor as next of root and root as previous 
+    of inorder successor.
+    3. Find the leftmost node and return it (the leftmost node is 
+    always head of converted DLL).
+
+
+\end{lstlisting}
+
+\end{document}
+

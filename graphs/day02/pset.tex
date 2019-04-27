@@ -1,0 +1,93 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 17: Backtracking + BFS}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{}
+
+
+\begin{enumerate}
+
+\item  Bookbag Problem: Given a choice of items with
+various weighted books and a limited carrying capacity, 
+find the optimal load. For example, given a bookbag of capacity 50lb, and one 32lb book, two 22lb book, one 15lb book, and one 5lb book, the maximum weight that can be carried is 22+22+5 = 49lbs.
+
+%%%%% PROBLEM 3: Bipartite Graphs %%%%%
+\item Bipartite Graphs: A bipartite graph is an undirected graph whose vertices can be divided into disjoint sets $U$ and $V$ such that every edge connects a vertex in $U$ to one in $V$.  Identifying bipartite graphs can be useful in problems involving scheduling, game theory, matching, and advertising. Here's an example of a bipartite graph:
+
+\centerline{\includegraphics[width=150px]{bipartite}}
+
+Given the undirected graph $G$, write a function that returns true if the graph is bipartite.
+
+When you are done or if you need a hint: Skim these notes for a better understanding of bipartite graphs and the 2 coloring method used to identify them: \href{bit.ly/DSAbipartite}{bit.ly/DSAbipartite}
+
+%%%%% PROBLEM 5: Largest value in each tree row %%%%%
+\item Largest Tree Values: Given a binary tree, return an array of length \texttt{root.height} where the $i^{th}$ element represents the largest element at the $i^{th}$ level of the tree (the root is at the $0^{th}$ level).
+
+\item Tug of War: Given a set of positive and negative integers, divide the set into two equal size groups that have the least difference in sum. For example in the set {-3,4,7,-8,10,-1}, a solution would be {4 7,-8} and { -3, 10,-1}
+
+\item Knight's Tour: Given a single knight starting on any square (x,y) on a NxN chessboard, return a list of squares traveled to in an order such that the knight travels to every square on the board exactly once. Return an empty list if it is not possible. Reminder that knights move in an L movement, going out one square, then out two more in a perpendicular direction to the first move.
+
+\item Chromatic Numbers: If a graph can be be colored with \texttt{m} or more colors such that no two adjacent vertices of the graph are colored with same color, then the graphs chromatic number is \texttt{m}. Here are graphs whose chromatic numbers are 3 and 4 respectively:
+\begin{center}
+\includegraphics[scale=0.32]{mcolor}
+\includegraphics[scale=1.7]{4color.png}
+\end{center}
+
+Given a graph \texttt{G} and a chromatic number \texttt{m}, color each vertex by marking each vertex with a color:
+
+\texttt{vertex.color = 2 // mark the vertex from [1, m]}
+
+\item Maze Path: Given a maze (like the one shown below), write an algorithm that outputs a \texttt{List} of \texttt{x, y} pairs that get you from \texttt{sourceX}, \texttt{sourceY} to \texttt{destX}, \texttt{destY}. You can assume the maze is implemented with a \texttt{boolean[][]} where dead-zones are \texttt{0}:
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{mazegeeks}
+\end{figure}
+
+
+\end{enumerate}
+
+\pagebreak
+
+Bipartite solution:
+\begin{lstlisting}
+1. Assign RED color to the source vertex (putting into set U).
+2. Color all the neighbors with BLUE color (putting into set V).
+3. Color all neighbor's neighbor with RED color (putting into set U).
+4. This way, assign color to all vertices such that it satisfies all the 
+constraints of m way coloring problem where m = 2.
+5. While assigning colors, if we find a neighbor which is colored with same 
+color as current vertex, then the graph cannot be colored with 2 vertices 
+(or graph is not Bipartite) 
+\end{lstlisting}
+
+
+\end{document}

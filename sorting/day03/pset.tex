@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{\large{\textsc{In-Class 8: Counting Sort}}}
+\date{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+
+\usepackage{listings}
+
+
+\newcommand\perm[2][n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand*{\field}[1]{\mathbb{#1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\subsection*{Core}
+
+%%%%% PROBLEM 1 %%%%%
+\item You are given a deck of many, many cards. The all have values from $A=1$ to King$=13$. Cards with the same value are also ranked by suit. Spades $>$ Hearts $>$ Clubs $>$ Diamonds. Find an efficient way of sorting a given array of Cards (Card[]) in ascending order. (i.e. Ace of hearts should show up before Ace of spades, and Ace of spades should show up before three of spades)
+
+The definition for the Cards class is as follows:
+
+\begin{lstlisting}[language=Java]
+ public class Card {
+    int value; # From 1 to 13
+    String suit; # Either "spade", "heart", "club" or "diamond".
+ }
+\end{lstlisting}
+
+\item You are given a list of algorithm runtimes in $HH:MM:SS$ format. Return an array with these times in sorted order (i.e. $[04:05:11,10:15:01]$). You can assume you already have functions that can parse out the hours, minutes, and seconds portions of a time and can form a time string with properly padded 0's given the hours, minutes, and milliseconds. ($minutes("04:05:11")=5$, $getTime(4,5,11)="04:05:11"$)
+
+\subsection*{Extension}
+    
+\item You have the $X$ and $Y$ coordinates of $N$ points on the plane. You are also given the coordinates of point $A$. Return the $K$ closest points to $A$.
+
+\item Write a function \texttt{mergeKLists(lists)}, where lists is an array of length $k$ of sorted linked lists. Merge the $k$ linked lists together into one sorted linked list, and return the head of the new linked list. For example, \texttt{lists} might look like (for k=3): % David has python solution in leetcode
+
+\begin{lstlisting}
+[
+    1 -> 5 -> 8,
+    3 -> 4,
+    5 -> 5 -> 9
+]
+\end{lstlisting}
+
+Which should return the linked list \texttt{[1 -> 3 -> 4 -> 5 -> 5 -> 5 -> 8 -> 9]}. What is the runtime and space of your algorithm in terms of $N$ (the average number of elements in each linked lists) and $k$ (the number of linked lists).
+\end{enumerate}
+
+\clearpage
+
+\begin{lstlisting}[language=Java]
+CARD_SORT(cards):
+    suitMap = {diamond -> 0, club -> 1, heart -> 2, spade -> 3)
+    for card in cards :
+        card.overallValue = (card.value - 1) * 4 + suitMap[card.suit]
+        # Cards now have a value from 0 to 51
+    countingSort(cards, sort by cards.overallValue)
+    
+SORT_RUNTIMES(times):
+    for time in times:
+        time.totalSecs = seconds(time) + 60 * minutes(time) + 3600 * hours(time)
+    minTime = min(times, in terms of times.totalSecs)
+    
+    # offset by minTime so we save space at the beginning of our array
+    countingSort(cards, sort by times.totalSecs - minTime)
+
+    
+GET_CLOSEST_POINTS(points,A,k):
+    for point in points:
+        point.distance = (point.x - A.x)^2 + (point.y - A.y)^2
+    pq = new MaxHeap<Point>(), use point.distance as key
+    for point in points:
+        pq.offer(point)
+        if(pq.size > k) pq.poll()
+    return pq.asArray
+    
+MERGE_K_LISTS(lists): # input has an array of linked lists
+    if(lists.length == 1) return lists[0]
+    lists += [] # useful for division by 2 kind of stuff
+    for(i = 0; i < lists.length/2; i++):
+        # merge second list into the first one
+        MERGE(lists[i] + lists[i + lists.length/2])
+    return MERGE_K_LISTS(lists[:lists.length/2])
+
+\end{lstlisting}
+
+% FIND_KTH(k, A, B, s1, s2) {
+%     if (A or B is empty) {
+%         return kth element in (B or A) ; // take note of starting indices s1/s2
+%     }
+    
+%     if (k == 1) {
+%         return min of A[s1] and B[s2];
+%     }
+    
+%     midIndexA = s1 + k/2 - 1;
+%     midIndexB = s2 + k/2 - 1;
+    
+%     midValueA = A[midIndexA] if within bounds else INF;
+%     midValueB = B[midIndexB] if within bounds else INF;
+    
+%     if (midValueA < midValueB) {
+%         return FIND_KTH(k-k/2, A, B, midIndexA+1, s2);
+%     } else {
+%         return FIND_KTH(k-k/2, A, B, s1, midIndexB+1);
+%     }
+    
+% }
+
+
+
+\end{document}
+
+\grid
