@@ -2,6 +2,8 @@
 
 **This assignment is due Thursday night, May 2nd. Since this is our last class, the last day to turn this in will be Monday, May 6. If you need more time to complete this, you can reach out to Paul to ask for an extension.**
 
+Don't forget to fill out the survey [found here](https://forms.gle/8gTNsuQiYvsYkJmf6)!
+
 ## Learning Goals
 - Practice dynamic programming problem solving steps
 - Learn to identify and design a DP solution for more difficult problems
